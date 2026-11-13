@@ -33,9 +33,10 @@ npm start
 | Page | URL | Description |
 |---|---|---|
 | 🛒 **Storefront** | http://localhost:3000 | Product catalog, cart, and checkout |
-| 👥 **User Management** | http://localhost:3000/users | Role-based User Management (Admin/Superadmin) |
 | 🔑 **Sign In Portal** | http://localhost:3000/login | Authentication with session management |
+| 📝 **Customer Registration** | http://localhost:3000/register | Public registration (auto-assigned `CUSTOMER`) |
 | 👤 **User Profile** | http://localhost:3000/profile | Profile updates, balance check, transaction history |
+| 👥 **User Management** | http://localhost:3000/users | Role-based User Management (Admin/Superadmin) |
 | 🎓 **Student CRUD** | http://localhost:3000/students | Student records management |
 
 ---
@@ -56,8 +57,8 @@ The system automatically initializes the default Superadmin account upon first r
 | Role | Permissions |
 |---|---|
 | **SUPERADMIN** | Full system authority. Can create users, update all accounts, reset passwords, delete eligible accounts, manage permissions, and override administrative settings. The system default admin account is protected from deletion. |
-| **ADMIN** | Can manage regular user accounts (`USER`), view permitted records, and reset passwords for standard users. Cannot modify or delete `SUPERADMIN` accounts or escalate roles. |
-| **USER** | Can access personal account (`/profile`), update personal information, change own password, and view transaction history and settlement status. |
+| **ADMIN** | Can manage regular user accounts (`CUSTOMER`), view permitted records, and reset passwords for standard users. Cannot modify or delete `SUPERADMIN` accounts or escalate roles. |
+| **CUSTOMER** | Regular customer account created via public registration. Can access personal account (`/profile`), update personal details, change own password, and view transaction history and settlement status. |
 
 ---
 
@@ -88,6 +89,7 @@ Per system financial and security policy:
 | Method | Endpoint | Description |
 |---|---|---|
 | `POST` | `/api/auth/login` | Authenticate user & start session |
+| `POST` | `/api/auth/register` | Register new customer account (`CUSTOMER`) |
 | `POST` | `/api/auth/logout` | End session & clear cookie |
 | `GET` | `/api/auth/me` | Get currently logged in user |
 | `POST` | `/api/auth/change-password` | Update user password |

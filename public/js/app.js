@@ -1343,9 +1343,31 @@ function handleRegister() {
 function handleLogout() {
   state.currentUser = null;
   localStorage.removeItem("pnn_user");
+  // Call server logout
+  fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
   updateAuthUI();
   closeAuthModal();
   showToast("Signed out successfully.");
+}
+
+async function checkBackendSession() {
+  try {
+    const res = await fetch('/api/auth/me');
+    if (res.ok) {
+      const d = await res.json();
+      if (d.success && d.user) {
+        state.currentUser = {
+          id: d.user.id,
+          username: d.user.username,
+          firstName: d.user.full_name ? d.user.full_name.split(' ')[0] : d.user.username,
+          lastName: d.user.full_name ? d.user.full_name.split(' ').slice(1).join(' ') : '',
+          email: d.user.email,
+          role: d.user.role_name
+        };
+        updateAuthUI();
+      }
+    }
+  } catch (e) {}
 }
 
 function updateAuthUI() {
@@ -1353,17 +1375,21 @@ function updateAuthUI() {
   if (!btn) return;
 
   if (state.currentUser) {
+    btn.href = "/profile";
+    btn.onclick = null;
     btn.innerHTML = `
-      <div class="user-avatar">${state.currentUser.firstName.charAt(0)}</div>
-      <span>${state.currentUser.firstName}</span>
+      <div class="user-avatar">${(state.currentUser.firstName || 'U').charAt(0)}</div>
+      <span>${state.currentUser.firstName || state.currentUser.username}</span>
     `;
-    btn.onclick = () => openAuthModal("profile");
+    btn.title = `Signed in as ${state.currentUser.username} (${state.currentUser.role || 'Member'}) - Click to view Profile`;
   } else {
+    btn.href = "/login";
+    btn.onclick = null;
     btn.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       <span>Sign In</span>
     `;
-    btn.onclick = () => openAuthModal("login");
+    btn.title = "Sign In to your PNN account";
   }
 }
 
@@ -1635,6 +1661,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartUI();
   updateAuthUI();
   checkBackendConnection();
+  checkBackendSession();
 
   // Search input live handler
   const searchInput = document.getElementById("search-input");

@@ -1,5 +1,14 @@
 [
   {
+    "id": "ORD-1005",
+    "customer": "Juan Dela Cruz",
+    "date": "Nov 13, 2026",
+    "items": "Apple iPhone 15 Pro Max (x1), Samsung Galaxy S24 Ultra (x1), RGB Mechanical Gaming Keyboard (x1), Pro RGB 7.1 Gaming Headset (x1), 27\" 240Hz 1ms Curved Gaming Monitor (x1), HP HyperSpeed Gaming Mouse (x1)",
+    "total": "$4,826.70",
+    "status": "Processing",
+    "payment": "Cash on Delivery"
+  },
+  {
     "id": "ORD-9841",
     "customer": "Mark Anthony Santos",
     "date": "Nov 12, 2026",

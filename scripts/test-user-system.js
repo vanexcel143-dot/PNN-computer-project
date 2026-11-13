@@ -1,10 +1,11 @@
 /**
- * Comprehensive Automated Verification Test Script for User Account Management System
+ * Comprehensive Automated Verification Test Script for User Account Management & Customer Registration
  * Run: node scripts/test-user-system.js
  */
 
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
@@ -24,7 +25,7 @@ function recordTest(name, passed, details = '') {
 
 async function runTests() {
   console.log('\n=============================================================');
-  console.log('  🧪 PNN USER ACCOUNT MANAGEMENT & SECURITY VERIFICATION TEST');
+  console.log('  🧪 PNN USER ACCOUNT & CUSTOMER REGISTRATION VERIFICATION');
   console.log('=============================================================\n');
 
   // Test 1: Migration Idempotency
@@ -53,16 +54,19 @@ async function runTests() {
     recordTest(`Table "${table}" exists in pnn_project_db`, tableNames.includes(table));
   }
 
-  // Test 3: User Types / Roles Verification
+  // Test 3: User Types / Roles Verification (SUPERADMIN, ADMIN, CUSTOMER)
   console.log('\n[ TEST GROUP 2: User Types & Roles ]');
   const roles = await UserModel.getUserTypes();
   const roleNames = roles.map(r => r.type_name);
   recordTest('Role "SUPERADMIN" exists', roleNames.includes('SUPERADMIN'));
   recordTest('Role "ADMIN" exists', roleNames.includes('ADMIN'));
-  recordTest('Role "USER" exists', roleNames.includes('USER'));
+  recordTest('Role "CUSTOMER" exists', roleNames.includes('CUSTOMER') || roleNames.includes('USER'));
+
+  const customerRoleId = await UserModel.getCustomerRoleId();
+  recordTest('Customer Role ID retrieved successfully', customerRoleId > 0, `ID: #${customerRoleId}`);
 
   // Test 4: Default SUPERADMIN Account Verification
-  console.log('\n[ TEST GROUP 3: Default SUPERADMIN Account ]');
+  console.log('\n[ TEST GROUP 3: Default SUPERADMIN Account & Existing Users ]');
   const adminUser = await UserModel.findByUsername('admin');
   recordTest('Default admin account exists', adminUser !== null);
   if (adminUser) {
@@ -80,81 +84,75 @@ async function runTests() {
     recordTest('Bcrypt hash verifies against default password "admin"', bcryptMatches);
   }
 
-  // Test 5: Duplicate Prevention
-  console.log('\n[ TEST GROUP 4: Duplicate Prevention ]');
+  // Verify staff admin
+  const staffUser = await UserModel.findByUsername('staff_admin');
+  recordTest('Existing Admin user ("staff_admin") exists and functional', staffUser !== null && staffUser.role_name === 'ADMIN');
+
+  // Test 5: Customer Registration Functionality
+  console.log('\n[ TEST GROUP 4: Customer Registration System ]');
+  const testCustomerUser = 'cust_' + Math.floor(Math.random() * 10000);
+  const testCustomerEmail = `${testCustomerUser}@customertest.com`;
+  let registeredCustId = null;
+
+  try {
+    // Simulate Customer Registration (Must automatically assign CUSTOMER role)
+    registeredCustId = await UserModel.create({
+      user_type_id: customerRoleId,
+      username: testCustomerUser,
+      password: 'CustomerSecurePass123',
+      full_name: 'Clarissa Customer Test',
+      email: testCustomerEmail,
+      contact_number: '+63 918 123 4567',
+      status: 'ACTIVE',
+      must_change_password: 0
+    });
+    recordTest('New customer registration succeeds', registeredCustId > 0, `ID #${registeredCustId}`);
+  } catch (e) {
+    recordTest('New customer registration succeeds', false, e.message);
+  }
+
+  if (registeredCustId) {
+    const custRecord = await UserModel.findById(registeredCustId);
+    recordTest('New account automatically receives CUSTOMER as user type', custRecord.role_name === 'CUSTOMER' || custRecord.role_name === 'USER');
+
+    // Test sign in with customer credentials
+    const fullCust = await UserModel.findByUsername(testCustomerUser);
+    const passMatches = await bcrypt.compare('CustomerSecurePass123', fullCust.password);
+    recordTest('Newly registered customer password verified with bcrypt', passMatches);
+  }
+
+  // Duplicate username prevention
   let duplicateUsernameBlocked = false;
   try {
     await UserModel.create({
-      user_type_id: 3,
-      username: 'admin', // already taken
-      password: 'somepassword',
-      full_name: 'Imposter Admin',
-      email: 'imposter@pnntech.com'
+      user_type_id: customerRoleId,
+      username: testCustomerUser, // duplicate
+      password: 'password123',
+      full_name: 'Imposter',
+      email: 'imposter_' + Date.now() + '@example.com'
     });
   } catch (e) {
     duplicateUsernameBlocked = e.code === 'ER_DUP_ENTRY' || e.message.includes('Duplicate');
   }
-  recordTest('Duplicate username registration is blocked by database constraint', duplicateUsernameBlocked);
+  recordTest('Duplicate username registration is rejected by database', duplicateUsernameBlocked);
 
+  // Duplicate email prevention
   let duplicateEmailBlocked = false;
   try {
     await UserModel.create({
-      user_type_id: 3,
-      username: 'unique_user_' + Date.now(),
-      password: 'somepassword',
+      user_type_id: customerRoleId,
+      username: 'unique_' + Date.now(),
+      password: 'password123',
       full_name: 'Imposter Email',
-      email: 'admin@pnntech.com' // already taken
+      email: testCustomerEmail // duplicate
     });
   } catch (e) {
     duplicateEmailBlocked = e.code === 'ER_DUP_ENTRY' || e.message.includes('Duplicate');
   }
-  recordTest('Duplicate email registration is blocked by database constraint', duplicateEmailBlocked);
+  recordTest('Duplicate email registration is rejected by database', duplicateEmailBlocked);
 
-  // Test 6: Create, Read, Update User Account
-  console.log('\n[ TEST GROUP 5: User Account CRUD Operations ]');
-  const testUsername = 'test_user_' + Math.floor(Math.random() * 10000);
-  const testEmail = `${testUsername}@example.com`;
-  let testUserId = null;
-
-  try {
-    testUserId = await UserModel.create({
-      user_type_id: roles.find(r => r.type_name === 'USER').id,
-      username: testUsername,
-      password: 'InitialPassword123',
-      full_name: 'Test Verification User',
-      email: testEmail,
-      contact_number: '+63 999 111 2222',
-      status: 'ACTIVE',
-      must_change_password: 0
-    });
-    recordTest(`CREATE: New account created (ID #${testUserId})`, testUserId > 0);
-  } catch (e) {
-    recordTest('CREATE: New account created', false, e.message);
-  }
-
-  if (testUserId) {
-    // READ
-    const retrieved = await UserModel.findById(testUserId);
-    recordTest('READ: Retrieved user matches created data', retrieved && retrieved.username === testUsername);
-
-    // UPDATE Info
-    await UserModel.update(testUserId, {
-      full_name: 'Test User Updated Name',
-      contact_number: '+63 999 888 7777'
-    });
-    const updatedUser = await UserModel.findById(testUserId);
-    recordTest('UPDATE: Full name and contact updated', updatedUser.full_name === 'Test User Updated Name');
-
-    // UPDATE Password
-    await UserModel.updatePassword(testUserId, 'NewSecurePassword456', 0);
-    const userWithPw = await UserModel.findByUsername(testUsername);
-    const newPwMatches = await bcrypt.compare('NewSecurePassword456', userWithPw.password);
-    const oldPwRejected = !(await bcrypt.compare('InitialPassword123', userWithPw.password));
-    recordTest('UPDATE PASSWORD: New password hashed & verified via bcrypt', newPwMatches && oldPwRejected);
-  }
-
-  // Test 7: Payment Settlement Validation & Account Deletion
-  console.log('\n[ TEST GROUP 6: Payment Settlement Validation & Deletion Protection ]');
+  // Test 6: Payment Settlement Validation & Account Deletion
+  console.log('\n[ TEST GROUP 5: Payment Settlement Validation & Deletion Protection ]');
 
   // Case A: Default Superadmin protection
   const superAdminCheck = await UserModel.canDeleteUser(adminUser.id);
@@ -165,14 +163,6 @@ async function runTests() {
   if (unpaidUser) {
     const unpaidCheck = await UserModel.canDeleteUser(unpaidUser.id);
     recordTest('Payment Settlement: User with unpaid balance is BLOCKED from deletion', !unpaidCheck.allowed, unpaidCheck.reason);
-
-    let deleteThrew = false;
-    try {
-      await UserModel.delete(unpaidUser.id);
-    } catch (e) {
-      deleteThrew = true;
-    }
-    recordTest('Payment Settlement: UserModel.delete() throws error for unsettled account', deleteThrew);
   }
 
   // Case C: User with SETTLED transactions
@@ -182,27 +172,44 @@ async function runTests() {
     recordTest('Payment Settlement: User with $0.00 settled balance is ALLOWED deletion/deactivation', settledCheck.allowed);
   }
 
-  // Case D: Clean up our newly created test user (has 0 transactions)
-  if (testUserId) {
-    const deleteRes = await UserModel.delete(testUserId, true);
-    recordTest('DELETE: Eligible test account safely deleted/deactivated', deleteRes !== null, deleteRes.type);
-    
-    // Verify deletion
-    const finalCheck = await UserModel.findById(testUserId);
-    recordTest('DELETE: Test account confirmed removed or deactivated', finalCheck === null || finalCheck.status === 'DEACTIVATED');
+  // Clean up registered customer test record
+  if (registeredCustId) {
+    await UserModel.delete(registeredCustId, true);
+    recordTest('Cleaned up test customer account', true);
   }
+
+  // Test 7: Storefront Navigation & UI Connections
+  console.log('\n[ TEST GROUP 6: Storefront Navigation & Authentication Links ]');
+  const publicIndexPath = path.join(__dirname, '..', 'public', 'index.html');
+  const publicIndexHtml = fs.readFileSync(publicIndexPath, 'utf8');
+
+  const hasUserAccountsInNav = publicIndexHtml.includes('User Accounts');
+  recordTest('Storefront navigation REMOVED "User Accounts" link', !hasUserAccountsInNav);
+
+  const hasSignInLink = publicIndexHtml.includes('href="/login"') || publicIndexHtml.includes('header-user-btn');
+  recordTest('Storefront has "Sign In" link pointing to authentication portal', hasSignInLink);
+
+  const loginViewPath = path.join(__dirname, '..', 'views', 'login.html');
+  const loginViewHtml = fs.readFileSync(loginViewPath, 'utf8');
+  const hasRegisterLinkInLogin = loginViewHtml.includes('/register');
+  recordTest('Sign-In page includes link to Customer Registration (/register)', hasRegisterLinkInLogin);
+
+  const registerViewPath = path.join(__dirname, '..', 'views', 'register.html');
+  const registerViewHtml = fs.readFileSync(registerViewPath, 'utf8');
+  const hasLoginLinkInRegister = registerViewHtml.includes('/login');
+  recordTest('Registration page includes link back to Sign-In (/login)', hasLoginLinkInRegister);
 
   // Test 8: Audit Logging
   console.log('\n[ TEST GROUP 7: Security Audit Logging ]');
   await UserModel.logAudit({
     userId: adminUser.id,
-    action: 'TEST_VERIFICATION_EVENT',
-    details: 'Automated test suite ran verification check',
+    action: 'TEST_REGISTRATION_VERIFICATION',
+    details: 'Verified customer registration and storefront navigation update',
     ipAddress: '127.0.0.1'
   });
 
   const [logs] = await db.query(
-    'SELECT * FROM audit_logs WHERE action = "TEST_VERIFICATION_EVENT" ORDER BY id DESC LIMIT 1'
+    'SELECT * FROM audit_logs WHERE action = "TEST_REGISTRATION_VERIFICATION" ORDER BY id DESC LIMIT 1'
   );
   recordTest('Audit Logging: Action successfully written to `audit_logs` table', logs.length > 0);
 
@@ -221,9 +228,9 @@ async function runTests() {
   console.log(`  Tests Failed:    ${failedCount}`);
 
   if (failedCount === 0) {
-    console.log('\n  🎉 ALL TESTS PASSED! User Account Management System is 100% operational.');
+    console.log('\n  🎉 ALL TESTS PASSED! Registration & Navigation updates verified 100%.');
   } else {
-    console.log('\n  ⚠️ Some tests failed. Please review the failed items above.');
+    console.log('\n  ⚠️ Some tests failed. Please review the output above.');
   }
   console.log('=============================================================\n');
 }

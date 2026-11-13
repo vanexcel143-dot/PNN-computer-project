@@ -55,7 +55,7 @@ class UserManagementController {
           const isSettled = balance <= 0 && unpaidCount === 0;
 
           // Badges
-          const roleClass = u.role_name === 'SUPERADMIN' ? 'role-superadmin' : (u.role_name === 'ADMIN' ? 'role-admin' : 'role-user');
+          const roleClass = u.role_name === 'SUPERADMIN' ? 'role-superadmin' : (u.role_name === 'ADMIN' ? 'role-admin' : 'role-customer');
           const statusClass = u.status === 'ACTIVE' ? 'status-active' : (u.status === 'DEACTIVATED' ? 'status-deactivated' : 'status-inactive');
           const balanceBadge = isSettled
             ? `<span class="balance-badge balance-settled">✓ Settled ($0.00)</span>`

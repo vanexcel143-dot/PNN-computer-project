@@ -1,7 +1,7 @@
 {
   "name": "pnn-computer-shop",
-  "version": "1.0.0",
-  "description": "PNN Computer and Cellphone Shop - Official High-Performance Tech Storefront & Management Hub",
+  "version": "2.0.0",
+  "description": "PNN Computer & Cellphone Shop - Upgraded Full-Stack Node.js Application & Student CRUD System",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,17 +9,18 @@
   },
   "keywords": [
     "pnn",
-    "computer-shop",
-    "cellphone-shop",
-    "ecommerce",
-    "gaming-rigs",
-    "figma",
-    "nodejs"
+    "nodejs",
+    "express",
+    "mysql2",
+    "crud",
+    "ecommerce"
   ],
   "author": "PNN Computer & Cellphone Shop",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "cors": "^2.8.5"
+    "mysql2": "^3.9.7"
   }
 }

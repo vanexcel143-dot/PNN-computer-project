@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ORD-9841",
+    "customer": "Mark Anthony Santos",
+    "date": "Nov 12, 2026",
+    "items": "2024 Laptop Computer Ultra (x1)",
+    "total": "$1,999.00",
+    "status": "Delivered",
+    "payment": "GCash"
+  },
+  {
+    "id": "ORD-9842",
+    "customer": "Kristine Joy Reyes",
+    "date": "Nov 13, 2026",
+    "items": "ASUS ROG Gaming Desktop Rig (x1)",
+    "total": "$1,899.00",
+    "status": "Processing",
+    "payment": "Credit Card"
+  },
+  {
+    "id": "ORD-9843",
+    "customer": "Carlos Miguel Mendoza",
+    "date": "Nov 13, 2026",
+    "items": "Pro RGB 7.1 Gaming Headset (x1), HP Gaming Mouse (x1)",
+    "total": "$2,387.00",
+    "status": "Pending",
+    "payment": "Cash on Delivery"
+  },
+  {
+    "id": "ORD-9844",
+    "customer": "Daphne Ramos",
+    "date": "Nov 13, 2026",
+    "items": "Samsung Galaxy S24 Ultra (x1)",
+    "total": "$1,199.00",
+    "status": "Shipped",
+    "payment": "PayPal"
+  }
+]

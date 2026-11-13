@@ -1,0 +1,214 @@
+<?php
+/**
+ * PNN Student Records - UPDATE
+ * Edit an existing student record in `pnn_project_db`
+ */
+require_once __DIR__ . '/connection.php';
+
+$error = '';
+
+// Handle Form Submission (POST)
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+    $name = isset($_POST["name"]) ? trim($_POST["name"]) : '';
+    $email = isset($_POST["email"]) ? trim($_POST["email"]) : '';
+    $course = isset($_POST["course"]) ? trim($_POST["course"]) : '';
+
+    if (!$id) {
+        $error = "Invalid student record identifier.";
+    } elseif ($name === '' || $email === '' || $course === '') {
+        $error = "All fields are required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Please provide a valid email address.";
+    } else {
+        $stmt = $conn->prepare("UPDATE students SET name = ?, email = ?, course = ? WHERE id = ?");
+        if ($stmt) {
+            $stmt->bind_param("sssi", $name, $email, $course, $id);
+            if ($stmt->execute()) {
+                $stmt->close();
+                $conn->close();
+                header("Location: read.php?msg=updated");
+                exit;
+            } else {
+                $error = "Failed to update record: " . htmlspecialchars($stmt->error);
+            }
+            $stmt->close();
+        } else {
+            $error = "Query preparation failed: " . htmlspecialchars($conn->error);
+        }
+    }
+}
+
+// Fetch Existing Record (GET or after validation failure)
+$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+if (!$id && isset($_POST["id"])) {
+    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+}
+
+if (!$id) {
+    $conn->close();
+    header("Location: read.php");
+    exit;
+}
+
+$stmt = $conn->prepare("SELECT * FROM students WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$student = $result->fetch_assoc();
+$stmt->close();
+
+if (!$student) {
+    $conn->close();
+    die("<div style='font-family: sans-serif; padding: 2rem; background: #fee2e2; color: #b91c1c; margin: 2rem; border-radius: 8px;'>
+        <h3>Student Not Found</h3>
+        <p>No student record exists with ID #{$id}.</p>
+        <a href='read.php' style='color: #0070f3;'>← Return to Student Records</a>
+    </div>");
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student #<?= (int)$student['id'] ?> | PNN Computer Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 3.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .form-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg, 16px);
+            border: 1px solid var(--border-light, #e2e8f0);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        .form-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #0b0c10 0%, #161b22 100%);
+            color: #ffffff;
+        }
+        .form-header h2 {
+            font-family: var(--font-heading, 'Poppins', sans-serif);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 0 0.35rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .form-body {
+            padding: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .form-control {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-light, #e2e8f0);
+            border-radius: var(--radius-md, 10px);
+            font-size: 0.95rem;
+            background: #f8fafc;
+            transition: all 0.2s ease;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary, #0070f3);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+        }
+        .alert-error {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-md, 10px);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .form-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light, #e2e8f0);
+        }
+    </style>
+</head>
+<body style="background-color: #f8fafc; font-family: 'Inter', sans-serif;">
+
+    <!-- Top Announcement Bar -->
+    <aside class="top-announcement-bar" role="banner">
+        <div class="container top-announcement-content">
+            <span class="announcement-badge">PNN Database</span>
+            <span>⚡ Updating Student Record #<?= (int)$student['id'] ?> in MySQL: <strong>pnn_project_db</strong></span>
+        </div>
+    </aside>
+
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    Edit Student Record
+                </h2>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">Editing record for Student ID <strong>#<?= (int)$student['id'] ?></strong></p>
+            </div>
+
+            <div class="form-body">
+                <?php if ($error !== ''): ?>
+                    <div class="alert-error">
+                        ⚠️ <?= htmlspecialchars($error) ?>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST" action="update.php">
+                    <input type="hidden" name="id" value="<?= (int)$student['id'] ?>">
+
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Student Name <span style="color: #ef4444;">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control" value="<?= htmlspecialchars($student['name']) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address <span style="color: #ef4444;">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control" value="<?= htmlspecialchars($student['email']) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="course">Academic Program / Course <span style="color: #ef4444;">*</span></label>
+                        <input type="text" id="course" name="course" class="form-control" value="<?= htmlspecialchars($student['course']) ?>" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="read.php" class="btn-secondary" style="color: #475569; border: 1px solid #cbd5e1; text-decoration: none;">Cancel</a>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<?php
+$conn->close();
+?>

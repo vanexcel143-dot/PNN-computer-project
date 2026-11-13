@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNN COMPUTER & CELLPHONE SHOP | High-Performance Tech & Gaming Gear</title>
+  <meta name="description" content="PNN Computer and Cellphone Shop - Official online store for high-performance laptops, gaming desktops, smartphones, computer peripherals, and accessories.">
+  
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP STUDENT DISCOUNT ANNOUNCEMENT BAR (FIGMA RED BANNER)
+       ======================================================================== -->
+  <aside class="top-announcement-bar" role="banner">
+    <div class="container top-announcement-content">
+      <span class="announcement-badge">Special Promo</span>
+      <span>⚡ DON'T MISS OUR 10% OFF DISCOUNT FOR STUDENTS!</span>
+      <span class="promo-code-pill" onclick="copyPromoCode('STUDENT10')" title="Click to copy promo code">
+        <span>Use Code:</span>
+        <strong style="color: #ffffff; letter-spacing: 0.05em;">STUDENT10</strong>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      </span>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       MAIN HEADER & NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="PNN Computer Shop Homepage">
+        <div class="brand-icon">
+          <!-- Cyber PNN Monogram -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+            <circle cx="12" cy="10" r="2.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">PNN</span>
+          <span class="brand-tagline">Computer & Cellphone Shop</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <div class="dropdown-parent">
+          <a href="#catalog" class="nav-link" onclick="setCategoryFilter('all')">
+            <span>Computers</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#catalog" class="dropdown-item" onclick="setCategoryFilter('laptop')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>
+              <span>Laptops & Ultrabooks</span>
+            </a>
+            <a href="#catalog" class="dropdown-item" onclick="setCategoryFilter('system_unit')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><circle cx="12" cy="14" r="3"></circle><line x1="12" y1="6" x2="12.01" y2="6"></line></svg>
+              <span>Gaming Desktops & System Units</span>
+            </a>
+            <a href="#catalog" class="dropdown-item" onclick="setCategoryFilter('mini_pc')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"></rect><line x1="7" y1="12" x2="7.01" y2="12"></line><line x1="11" y1="12" x2="11.01" y2="12"></line></svg>
+              <span>Mini PCs & Compact Rigs</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#catalog" class="nav-link" onclick="setCategoryFilter('phone')">Phones</a>
+        <a href="#catalog" class="nav-link" onclick="setCategoryFilter('peripherals')">Peripherals</a>
+        <a href="#catalog" class="nav-link" onclick="setCategoryFilter('accessories')">Accessories</a>
+        <a href="#best-sellers" class="nav-link">Best Sellers</a>
+        <a href="resources/read.php" class="nav-link" style="color: var(--primary); font-weight: 700;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Student CRUD
+        </a>
+      </nav>
+
+      <!-- Instant Live Search Bar -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search laptops, RTX rigs, phones..." aria-label="Search products">
+      </div>
+
+      <!-- Action Items & Buttons -->
+      <div class="header-actions">
+        <!-- Admin Dashboard Modal Trigger -->
+        <button class="admin-badge-btn" onclick="openAdminDashboard()" title="Open Admin Portal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Admin Portal</span>
+        </button>
+
+        <!-- User Authentication Account Button -->
+        <button id="header-user-btn" class="user-account-btn" onclick="openAuthModal('login')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Sign In</span>
+        </button>
+
+        <!-- Shopping Cart Trigger -->
+        <button class="action-btn" onclick="toggleCartDrawer(true)" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="action-btn mobile-menu-toggle" onclick="openAuthModal('profile')" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION - CYBER BLUE LIGHTING & HARDWARE SHOWCASE
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="hero-circuit-bg"></div>
+    <div class="hero-glow-sphere"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          <span>Next-Gen Tech Arrival 2026</span>
+        </div>
+
+        <h1 class="hero-title">
+          Power Your Game with <span class="text-brand-glow">PNN</span> <span class="text-gradient">Computers</span>
+        </h1>
+
+        <p class="hero-description">
+          Elevate your productivity and gaming performance with high-spec custom rigs, RTX 40-Series laptops, flagship smartphones, and premium esports peripherals.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#catalog" class="btn-primary" onclick="setCategoryFilter('all')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            Explore Catalog
+          </a>
+          <a href="#best-sellers" class="btn-secondary">
+            <span>View Best Sellers</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Authentic & Tested</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1-Year</span>
+            <span class="stat-label">Official Warranty</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Tech Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card Showcase -->
+      <div class="hero-visual-card">
+        <img class="hero-main-img" src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80" alt="PNN Flagship 2024 Laptop Computer">
+        <div class="hero-floating-badge">
+          ★ Best Seller: 2024 Laptop Computer Ultra ($1,999)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       VALUE PROPOSITION BAR (4 COLUMNS - EXACT FIGMA MATCH)
+       ======================================================================== -->
+  <section class="value-props-section" aria-label="Shop Guarantees">
+    <div class="container value-props-grid">
+      <div class="value-prop-card">
+        <div class="value-prop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+        <div class="value-prop-text">
+          <h4>Free Shipping</h4>
+          <p>On all eligible nationwide orders with safe transit packaging</p>
+        </div>
+      </div>
+
+      <div class="value-prop-card">
+        <div class="value-prop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="value-prop-text">
+          <h4>1-Year Warranty</h4>
+          <p>Full manufacturer warranty & local technical diagnostic service</p>
+        </div>
+      </div>
+
+      <div class="value-prop-card">
+        <div class="value-prop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+        </div>
+        <div class="value-prop-text">
+          <h4>24/7 Online Support</h4>
+          <p>Direct chat assistance for builds, repairs, and part compatibility</p>
+        </div>
+      </div>
+
+      <div class="value-prop-card">
+        <div class="value-prop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        </div>
+        <div class="value-prop-text">
+          <h4>Secure Payment</h4>
+          <p>100% encrypted checkout with GCash, Credit Cards & COD</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FEATURED BEST SELLERS SECTION (4 CARDS FROM FIGMA)
+       ======================================================================== -->
+  <section id="best-sellers" class="best-sellers-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-subtitle">Top Rated Hardware</span>
+          <h2 class="section-title">Featured Best Sellers</h2>
+        </div>
+        <a href="#catalog" class="section-link" onclick="setCategoryFilter('all')">
+          <span>View All Products</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- 4 Best Sellers Grid Rendered via JS -->
+      <div id="best-sellers-grid" class="products-grid-4"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PROMOTIONAL STUDENT DISCOUNT STRIP (FROM FIGMA)
+       ======================================================================== -->
+  <section class="promo-banner-section">
+    <div class="container">
+      <div class="promo-banner-card">
+        <div class="promo-banner-glow"></div>
+        <div class="promo-text-wrap">
+          <span class="promo-discount-badge">Student Special Offer</span>
+          <h2 class="promo-title">DON'T MISS OUR 10% OFF DISCOUNT FOR STUDENTS!</h2>
+          <p class="promo-desc">
+            Present your verified student ID or apply promo code <strong>STUDENT10</strong> at checkout to get an instant 10% discount across all laptops, desktops, and accessories.
+          </p>
+          <div class="promo-action-group">
+            <button class="btn-primary" onclick="copyPromoCode('STUDENT10'); toggleCartDrawer(true);">
+              Claim 10% Voucher
+            </button>
+            <a href="#catalog" class="btn-secondary" style="border-color: rgba(255, 255, 255, 0.4);">
+              Browse Eligible Laptops
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FULL PRODUCT CATALOG & CATEGORY FILTER TABS
+       ======================================================================== -->
+  <section id="catalog" class="catalog-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-subtitle">Complete Inventory</span>
+          <h2 class="section-title">Explore Tech Catalog</h2>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-filter-bar">
+        <button class="filter-pill active" onclick="setCategoryFilter('all', this)">All Hardware</button>
+        <button class="filter-pill" onclick="setCategoryFilter('laptop', this)">Laptops</button>
+        <button class="filter-pill" onclick="setCategoryFilter('system_unit', this)">System Units & Rigs</button>
+        <button class="filter-pill" onclick="setCategoryFilter('mini_pc', this)">Mini PCs</button>
+        <button class="filter-pill" onclick="setCategoryFilter('phone', this)">Smartphones</button>
+        <button class="filter-pill" onclick="setCategoryFilter('peripherals', this)">Peripherals</button>
+        <button class="filter-pill" onclick="setCategoryFilter('accessories', this)">Accessories</button>
+      </div>
+
+      <!-- Dynamic Catalog Grid Rendered via JS -->
+      <div id="catalog-grid" class="catalog-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       NEWSLETTER SUBSCRIPTION SECTION (FIGMA STYLE)
+       ======================================================================== -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-box">
+        <span class="newsletter-pill">Stay Connected</span>
+        <h2 class="newsletter-title">DON'T MISS OUT ON EXCLUSIVE TECH DEALS</h2>
+        <p class="newsletter-desc">
+          Subscribe to the PNN Tech Newsletter to receive early access to GPU drops, weekly student promo codes, and tech release notices.
+        </p>
+        <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+          <input type="email" id="newsletter-email" class="newsletter-input" required placeholder="Enter your email address...">
+          <button type="submit" class="btn-primary" style="white-space: nowrap;">Subscribe Now</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SITE FOOTER (DARK CYBER AESTHETIC - FIGMA STYLE)
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <span class="brand-name" style="color: white;">PNN</span>
+          </div>
+          <p>
+            PNN Computer and Cellphone Shop is your premier source for authentic computer hardware, high-end custom gaming rigs, laptops, smartphones, and professional tech accessories.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Shop Categories</h4>
+          <div class="footer-links">
+            <a href="#catalog" onclick="setCategoryFilter('laptop')">Laptops & Notebooks</a>
+            <a href="#catalog" onclick="setCategoryFilter('system_unit')">Custom Gaming Desktops</a>
+            <a href="#catalog" onclick="setCategoryFilter('mini_pc')">Mini PCs</a>
+            <a href="#catalog" onclick="setCategoryFilter('phone')">Smartphones</a>
+            <a href="#catalog" onclick="setCategoryFilter('peripherals')">Keyboards & Mice</a>
+            <a href="#catalog" onclick="setCategoryFilter('accessories')">Monitors & Audio</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <div class="footer-links">
+            <a href="#" onclick="openAuthModal('profile')">Warranty Claim Portal</a>
+            <a href="#" onclick="openCheckout()">Order Tracking Status</a>
+            <a href="#" onclick="copyPromoCode('STUDENT10')">Student Discount Policy</a>
+            <a href="#" onclick="openAdminDashboard()">Shop Management</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Branch & Support</h4>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Main Tech Hub, Cyberzone Commercial Strip, Metro Manila, Philippines</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+63 (02) 8921-7890 / 0917-890-PNN</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>support@pnncomputershop.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 PNN Computer and Cellphone Shop. All rights reserved.
+        </div>
+        <div class="payment-methods-row">
+          <span class="payment-badge">GCASH</span>
+          <span class="payment-badge">MAYA</span>
+          <span class="payment-badge">VISA</span>
+          <span class="payment-badge">MASTERCARD</span>
+          <span class="payment-badge">PAYPAL</span>
+          <span class="payment-badge">COD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL: PRODUCT DETAIL PAGE (PDP) - WITH SPECS & COLOR VARIANTS
+       ======================================================================== -->
+  <div id="pdp-modal" class="modal-overlay" onclick="closePDP()">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closePDP()" aria-label="Close">✕</button>
+      <div id="pdp-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       DRAWER: SHOPPING CART
+       ======================================================================== -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="toggleCartDrawer(false)">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="modal-close-btn" onclick="toggleCartDrawer(false)" aria-label="Close Cart">✕</button>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-list"></div>
+
+      <div class="cart-footer">
+        <div class="cart-coupon-wrap">
+          <input type="text" id="coupon-code-input" class="coupon-input" placeholder="Promo code (STUDENT10)">
+          <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="applyCoupon()">Apply</button>
+        </div>
+
+        <div class="cart-summary-line">
+          <span>Subtotal:</span>
+          <strong id="cart-subtotal">$0.00</strong>
+        </div>
+        <div class="cart-summary-line">
+          <span>Student Discount:</span>
+          <strong id="cart-discount">$0.00</strong>
+        </div>
+        <div class="cart-summary-line">
+          <span>Shipping:</span>
+          <strong id="cart-shipping">FREE</strong>
+        </div>
+        <div class="cart-summary-line total">
+          <span>Total:</span>
+          <strong id="cart-total" style="color: var(--primary);">$0.00</strong>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="openCheckout()">
+          Proceed to Checkout →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: MULTI-STEP CHECKOUT
+       ======================================================================== -->
+  <div id="checkout-modal" class="modal-overlay" onclick="closeCheckout()">
+    <div class="modal-window checkout-modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeCheckout()" aria-label="Close Checkout">✕</button>
+      
+      <div class="checkout-steps-bar">
+        <div class="step-indicator active">
+          <div class="step-circle">1</div>
+          <span>Address</span>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle">2</div>
+          <span>Shipping</span>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle">3</div>
+          <span>Payment</span>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle">4</div>
+          <span>Confirmation</span>
+        </div>
+      </div>
+
+      <div id="checkout-content-container" class="checkout-form-body"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: USER AUTHENTICATION & PROFILE
+       ======================================================================== -->
+  <div id="auth-modal" class="modal-overlay" onclick="closeAuthModal()">
+    <div class="modal-window auth-modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeAuthModal()" aria-label="Close Auth">✕</button>
+      <div id="auth-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: ADMIN & SHOP MANAGEMENT DASHBOARD (FIGMA MATCHING)
+       ======================================================================== -->
+  <div id="admin-modal" class="modal-overlay" onclick="closeAdminDashboard()">
+    <div class="modal-window admin-modal-window" onclick="event.stopPropagation()">
+      <div class="admin-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="brand-icon" style="width: 34px; height: 34px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </div>
+          <h3>PNN Shop Admin & Dispatch Hub</h3>
+        </div>
+        <button class="modal-close-btn" style="position: static; background: #1e293b; color: white;" onclick="closeAdminDashboard()">✕</button>
+      </div>
+
+      <div class="admin-body">
+        <!-- Dashboard Statistics -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <span class="admin-stat-title">Total Revenue</span>
+            <div id="admin-stat-revenue" class="admin-stat-value" style="color: var(--primary);">$38,878.00</div>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-title">Orders Dispatched</span>
+            <div id="admin-stat-orders" class="admin-stat-value">4</div>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-title">Active Inventory</span>
+            <div id="admin-stat-products" class="admin-stat-value">12</div>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-title">Customer Satisfaction</span>
+            <div class="admin-stat-value" style="color: var(--star-gold);">99.4%</div>
+          </div>
+        </div>
+
+        <!-- Delivery Orders Table (Figma Delivery ORDERS) -->
+        <div class="admin-table-container">
+          <div style="padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light);">
+            <h4 style="font-size: 1.1rem; font-weight: 800;">Delivery & Dispatch Orders</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Real-time dispatch management</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer Name</th>
+                  <th>Order Date</th>
+                  <th>Item Details</th>
+                  <th>Total Amount</th>
+                  <th>Status & Dispatch</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Product Inventory Management (Figma Product & Add Product) -->
+        <div class="admin-table-container">
+          <div style="padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); flex-wrap: wrap; gap: 0.75rem;">
+            <h4 style="font-size: 1.1rem; font-weight: 800;">Product Inventory Catalog</h4>
+            <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="openAddProductModal()">
+              + Add New Product
+            </button>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Rating</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MOBILE BOTTOM NAVIGATION BAR (FIGMA MOBILE MATCH)
+       ======================================================================== -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#" class="mobile-nav-btn active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </a>
+    <a href="#catalog" class="mobile-nav-btn" onclick="setCategoryFilter('all')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Shop</span>
+    </a>
+    <button class="mobile-nav-btn" onclick="toggleCartDrawer(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <span>Cart</span>
+      <span class="badge-count cart-count-badge" style="display: none; top: 4px; right: 20%;">0</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="openAuthModal('login')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <span>Account</span>
+    </button>
+  </nav>
+
+  <!-- Core JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>

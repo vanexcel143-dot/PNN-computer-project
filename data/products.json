@@ -1,0 +1,409 @@
+[
+  {
+    "id": "p1",
+    "name": "2024 Laptop Computer Ultra",
+    "category": "laptop",
+    "categoryLabel": "Laptop",
+    "price": 1999.00,
+    "originalPrice": 2299.00,
+    "rating": 5.0,
+    "reviewsCount": 142,
+    "badge": "sale",
+    "badgeText": "Sale 13% Off",
+    "isBestSeller": true,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Space Gray", "hex": "#4b5563" },
+      { "name": "Cyber Silver", "hex": "#e2e8f0" },
+      { "name": "Midnight Black", "hex": "#0f172a" },
+      { "name": "Electric Cyan", "hex": "#00e5ff" }
+    ],
+    "summary": "13th Gen Intel Core i7, 16GB DDR5, 1TB NVMe SSD, 15.6\" 144Hz IPS Display, RTX 4060.",
+    "specs": {
+      "Brand": "PNN Tech / ASUS",
+      "Model": "PNN Strix G16 2024",
+      "Operating System": "Windows 11 Home 64-bit",
+      "Processor": "Intel Core i7-13650HX (14 Cores, up to 4.9GHz)",
+      "System Memory": "16GB DDR5 4800MHz Dual-Channel",
+      "Storage": "1TB M.2 NVMe PCIe 4.0 SSD",
+      "Display Size": "15.6-inch Full HD (1920 x 1080) 144Hz IPS",
+      "Graphics GPU": "NVIDIA GeForce RTX 4060 8GB GDDR6",
+      "Web Camera": "720p HD with Privacy Shutter",
+      "Ports": "1x Thunderbolt 4, 1x USB-C, 2x USB 3.2, HDMI 2.1, RJ-45",
+      "Warranty": "1-Year Official PNN Manufacturer Warranty"
+    }
+  },
+  {
+    "id": "p2",
+    "name": "Pro RGB 7.1 Gaming Headset",
+    "category": "peripherals",
+    "categoryLabel": "Peripherals",
+    "price": 1398.00,
+    "originalPrice": 1599.00,
+    "rating": 5.0,
+    "reviewsCount": 98,
+    "badge": "hot",
+    "badgeText": "Best Seller",
+    "isBestSeller": true,
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Matte Black", "hex": "#111827" },
+      { "name": "Neon Blue", "hex": "#0070f3" },
+      { "name": "Cyber White", "hex": "#ffffff" }
+    ],
+    "summary": "True 7.1 Spatial Surround Sound, 50mm Titanium Drivers, Detachable AI Noise-Cancelling Mic.",
+    "specs": {
+      "Brand": "PNN Audio / HyperX",
+      "Model": "Cloud Alpha Cyber 7.1",
+      "Driver Diameter": "50mm Dynamic Neodymium",
+      "Frequency Response": "13Hz – 27,000Hz",
+      "Microphone": "Detachable Noise-Cancelling Bi-directional",
+      "Connectivity": "Wireless 2.4GHz + 3.5mm Analog Audio",
+      "Battery Life": "Up to 300 Hours on a Single Charge",
+      "Lighting": "RGB Custom Prism Effects",
+      "Warranty": "1-Year Official Replacement Warranty"
+    }
+  },
+  {
+    "id": "p3",
+    "name": "HP HyperSpeed Gaming Mouse",
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "price": 989.00,
+    "originalPrice": 1199.00,
+    "rating": 5.0,
+    "reviewsCount": 76,
+    "badge": "hot",
+    "badgeText": "Top Rated",
+    "isBestSeller": true,
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Obsidian Black", "hex": "#1e293b" },
+      { "name": "Cyber Teal", "hex": "#00c8ff" }
+    ],
+    "summary": "16,000 DPI Optical Sensor, 1ms Ultra-Low Latency Wireless, 6 Programmable Macro Buttons.",
+    "specs": {
+      "Brand": "HP Omen / PNN",
+      "Model": "Vector Wireless Pro",
+      "Sensor": "PixArt PMW3389 Optical (Up to 16,000 DPI)",
+      "Polling Rate": "1000Hz (1ms response time)",
+      "Switches": "Omron Mechanical (50 Million Clicks)",
+      "Weight": "69g Ultra-lightweight Ergonomic Design",
+      "Battery Life": "Up to 180 Hours (USB-C Fast Charging)",
+      "Warranty": "1-Year Official Warranty"
+    }
+  },
+  {
+    "id": "p4",
+    "name": "ASUS ROG Gaming Desktop Rig",
+    "category": "system_unit",
+    "categoryLabel": "System Unit",
+    "price": 1899.00,
+    "originalPrice": 2199.00,
+    "rating": 5.0,
+    "reviewsCount": 64,
+    "badge": "new",
+    "badgeText": "Flagship",
+    "isBestSeller": true,
+    "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Stealth Black", "hex": "#0b0c10" },
+      { "name": "Titanium Silver", "hex": "#94a3b8" }
+    ],
+    "summary": "Intel Core i9-14900KF, 32GB DDR5 6000MHz, 2TB PCIe 4.0 SSD, RTX 4080 Super 16GB, Liquid Cooled.",
+    "specs": {
+      "Brand": "ASUS ROG Strix / PNN Custom",
+      "Model": "G35CA Gaming Station",
+      "Processor": "Intel Core i9-14900KF (24 Cores, 32 Threads)",
+      "Cooling": "360mm AIO ARGB Liquid Cooler",
+      "RAM": "32GB (2x16GB) DDR5 6000MHz Corsair Vengeance",
+      "GPU": "NVIDIA GeForce RTX 4080 Super 16GB GDDR6X",
+      "Motherboard": "ASUS ROG Strix Z790-F Gaming WiFi",
+      "Storage": "2TB Samsung 990 Pro NVMe PCIe 4.0 SSD",
+      "Power Supply": "Corsair RM850e 850W Gold Fully Modular",
+      "Case": "Dual Chamber Tempered Glass with 6 ARGB Fans",
+      "Warranty": "2-Years Comprehensive Warranty + On-site Service"
+    }
+  },
+  {
+    "id": "p5",
+    "name": "2024 Slim Ultrabook Pro",
+    "category": "laptop",
+    "categoryLabel": "Laptop",
+    "price": 999.00,
+    "originalPrice": 1199.00,
+    "rating": 4.9,
+    "reviewsCount": 88,
+    "badge": "sale",
+    "badgeText": "Popular",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Silver Metal", "hex": "#cbd5e1" },
+      { "name": "Dark Indigo", "hex": "#1e1b4b" }
+    ],
+    "summary": "AMD Ryzen 7 7840HS, 16GB LPDDR5X, 512GB SSD, 14\" 2.8K OLED 120Hz display.",
+    "specs": {
+      "Brand": "PNN Slimline",
+      "Model": "ZenBook Ultra 14",
+      "Operating System": "Windows 11 Home",
+      "Processor": "AMD Ryzen 7 7840HS (8 Cores, 16 Threads)",
+      "RAM": "16GB LPDDR5X 6400MHz",
+      "Storage": "512GB NVMe M.2 SSD",
+      "Display": "14-inch 2.8K (2880 x 1800) OLED 120Hz 100% DCI-P3",
+      "Weight": "1.28 kg (Ultra-light)",
+      "Battery": "75Wh with 65W Fast Charging (14hr Battery Life)",
+      "Warranty": "1-Year International Warranty"
+    }
+  },
+  {
+    "id": "p6",
+    "name": "Lenovo Legion Pro Gaming Laptop",
+    "category": "laptop",
+    "categoryLabel": "Laptop",
+    "price": 1444.00,
+    "originalPrice": 1699.00,
+    "rating": 4.8,
+    "reviewsCount": 115,
+    "badge": "hot",
+    "badgeText": "High Perf",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Storm Grey", "hex": "#475569" },
+      { "name": "Glacier White", "hex": "#f1f5f9" }
+    ],
+    "summary": "Intel Core i7-14700HX, 16GB DDR5, RTX 4070 8GB, 16\" WQXGA 240Hz 500 nits HDR.",
+    "specs": {
+      "Brand": "Lenovo Legion",
+      "Model": "Legion Pro 5 Gen 9",
+      "Processor": "Intel Core i7-14700HX",
+      "GPU": "NVIDIA GeForce RTX 4070 8GB GDDR6 (140W TGP)",
+      "RAM": "16GB DDR5 5600MHz",
+      "Storage": "1TB SSD M.2 2280 PCIe 4.0",
+      "Display": "16\" WQXGA (2560x1600) IPS 240Hz, 500nits, G-SYNC",
+      "Warranty": "2-Years Legion Ultimate Support"
+    }
+  },
+  {
+    "id": "p7",
+    "name": "PNN Cyber Rig Custom Build",
+    "category": "system_unit",
+    "categoryLabel": "System Unit",
+    "price": 1499.00,
+    "originalPrice": 1699.00,
+    "rating": 4.9,
+    "reviewsCount": 42,
+    "badge": "new",
+    "badgeText": "Custom Built",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Cyber White", "hex": "#f8fafc" },
+      { "name": "Matte Black", "hex": "#0f172a" }
+    ],
+    "summary": "AMD Ryzen 7 7800X3D, RTX 4070 Ti, 32GB RGB DDR5, 1TB NVMe, Custom Glass Chassis.",
+    "specs": {
+      "Brand": "PNN Custom Rig",
+      "Model": "CyberStation V4",
+      "Processor": "AMD Ryzen 7 7800X3D Gaming Processor",
+      "Graphics": "NVIDIA RTX 4070 Ti 12GB OC Edition",
+      "RAM": "32GB (2x16GB) DDR5 6000MHz RGB",
+      "Storage": "1TB PCIe Gen4 NVMe M.2 SSD",
+      "Motherboard": "B650 WiFi Gaming Board",
+      "Power Supply": "750W 80+ Gold Certified",
+      "Warranty": "2-Year Parts & Labor Warranty"
+    }
+  },
+  {
+    "id": "p8",
+    "name": "Geekom Mini IT13 Core i9 Mini PC",
+    "category": "mini_pc",
+    "categoryLabel": "Mini PC",
+    "price": 699.00,
+    "originalPrice": 799.00,
+    "rating": 4.7,
+    "reviewsCount": 53,
+    "badge": "sale",
+    "badgeText": "Compact",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Deep Cobalt", "hex": "#1e3a8a" },
+      { "name": "Space Gray", "hex": "#475569" }
+    ],
+    "summary": "Intel Core i9-13900H (14 cores), 32GB RAM, 2TB SSD, Dual 8K Display support, WiFi 6E.",
+    "specs": {
+      "Brand": "Geekom / PNN",
+      "Model": "Mini IT13 High-Performance",
+      "Processor": "Intel Core i9-13900H (14 cores, up to 5.4GHz)",
+      "RAM": "32GB DDR4 3200MHz Dual Channel (Up to 64GB)",
+      "Storage": "2TB PCIe Gen4 M.2 SSD",
+      "Display Outputs": "2x USB4 (8K@60Hz) + 2x HDMI 2.0 (4K@60Hz)",
+      "Dimensions": "117 x 112 x 49.2 mm (Ultra Compact)",
+      "Warranty": "1-Year Full Warranty"
+    }
+  },
+  {
+    "id": "p9",
+    "name": "Samsung Galaxy S24 Ultra",
+    "category": "phone",
+    "categoryLabel": "Phone",
+    "price": 1199.00,
+    "originalPrice": 1299.00,
+    "rating": 5.0,
+    "reviewsCount": 184,
+    "badge": "hot",
+    "badgeText": "Flagship Phone",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Titanium Gray", "hex": "#64748b" },
+      { "name": "Titanium Black", "hex": "#0f172a" },
+      { "name": "Titanium Violet", "hex": "#581c87" },
+      { "name": "Titanium Yellow", "hex": "#ca8a04" }
+    ],
+    "summary": "Snapdragon 8 Gen 3, Galaxy AI, 200MP Quad Telephoto Camera, 6.8\" Dynamic AMOLED 2X, S-Pen.",
+    "specs": {
+      "Brand": "Samsung",
+      "Model": "Galaxy S24 Ultra 5G",
+      "Processor": "Qualcomm Snapdragon 8 Gen 3 for Galaxy",
+      "RAM": "12GB LPDDR5X",
+      "Storage": "512GB UFS 4.0",
+      "Display": "6.8\" Flat QHD+ Dynamic AMOLED 2X, 1-120Hz, 2600 nits",
+      "Camera": "200MP Main + 50MP 5x Tele + 10MP 3x Tele + 12MP Ultra-wide",
+      "Battery": "5,000 mAh with 45W Fast Charging",
+      "Warranty": "1-Year Official Samsung Philippines Warranty"
+    }
+  },
+  {
+    "id": "p10",
+    "name": "Apple iPhone 15 Pro Max",
+    "category": "phone",
+    "categoryLabel": "Phone",
+    "price": 1299.00,
+    "originalPrice": 1399.00,
+    "rating": 5.0,
+    "reviewsCount": 210,
+    "badge": "sale",
+    "badgeText": "Hot Phone",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Natural Titanium", "hex": "#94a3b8" },
+      { "name": "Blue Titanium", "hex": "#1e3a8a" },
+      { "name": "Black Titanium", "hex": "#18181b" },
+      { "name": "White Titanium", "hex": "#f4f4f5" }
+    ],
+    "summary": "A17 Pro 3nm chip, Aerospace Titanium design, 48MP Camera with 5x Telephoto, USB-C 10Gbps.",
+    "specs": {
+      "Brand": "Apple",
+      "Model": "iPhone 15 Pro Max",
+      "Chip": "A17 Pro chip with 6-core GPU and Ray Tracing",
+      "Storage": "256GB / 512GB",
+      "Display": "6.7\" Super Retina XDR with ProMotion 120Hz & Always-On",
+      "Camera": "Pro camera system (48MP Main, 12MP Ultra Wide, 12MP 5x Tele)",
+      "Build": "Forged Titanium Frame with Ceramic Shield Front",
+      "Warranty": "1-Year Apple Limited Warranty"
+    }
+  },
+  {
+    "id": "p11",
+    "name": "RGB Mechanical Gaming Keyboard",
+    "category": "peripherals",
+    "categoryLabel": "Peripherals",
+    "price": 129.00,
+    "originalPrice": 159.00,
+    "rating": 4.9,
+    "reviewsCount": 65,
+    "badge": "hot",
+    "badgeText": "Hot Swap",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Cyberpunk Edition", "hex": "#7c3aed" },
+      { "name": "Arctic White", "hex": "#f1f5f9" }
+    ],
+    "summary": "Hot-Swappable Linear Silver Switches, Gasket Mounted, Sound Dampening Foam, Per-key RGB.",
+    "specs": {
+      "Brand": "PNN MechLab",
+      "Model": "CyberKeys Pro 75%",
+      "Switch Type": "Pre-lubed Custom Linear Silver Switches",
+      "Layout": "75% Compact (82 Keys) + CNC Aluminum Knob",
+      "Keycaps": "Double-shot PBT Cherry Profile",
+      "Connectivity": "Tri-Mode (Bluetooth 5.1, 2.4GHz Wireless, USB-C)",
+      "Battery": "4000mAh Rechargable Battery",
+      "Warranty": "1-Year Replacement Warranty"
+    }
+  },
+  {
+    "id": "p12",
+    "name": "27\" 240Hz 1ms Curved Gaming Monitor",
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "price": 349.00,
+    "originalPrice": 429.00,
+    "rating": 4.8,
+    "reviewsCount": 89,
+    "badge": "sale",
+    "badgeText": "240Hz Super Fast",
+    "isBestSeller": false,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80",
+    "thumbnails": [
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80"
+    ],
+    "colors": [
+      { "name": "Dark Armor", "hex": "#0f172a" }
+    ],
+    "summary": "1500R Curvature, 2560x1440 QHD, 240Hz Refresh Rate, 0.5ms MPRT, AMD FreeSync Premium Pro.",
+    "specs": {
+      "Brand": "PNN Vision / AOC",
+      "Model": "Curved Thunder 27G",
+      "Screen Size": "27-inch 1500R Curved Fast VA Panel",
+      "Resolution": "QHD 2560 x 1440",
+      "Refresh Rate": "240Hz via DisplayPort 1.4",
+      "Response Time": "0.5ms (MPRT) / 1ms (GtG)",
+      "Color Gamut": "125% sRGB, 95% DCI-P3, HDR400",
+      "Ports": "2x HDMI 2.0, 2x DisplayPort 1.4, Audio Out",
+      "Warranty": "3-Years Zero Bright Dot Warranty"
+    }
+  }
+]

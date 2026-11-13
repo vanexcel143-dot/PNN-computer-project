@@ -5,12 +5,15 @@
 
 const express = require('express');
 const cors = require('cors');
+const session = require('express-session');
 const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
 const { initializeDatabase } = require('./config/db');
 const studentRoutes = require('./routes/studentRoutes');
+const authRoutes = require('./routes/authRoutes');
+const userManagementRoutes = require('./routes/userManagementRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,10 +26,34 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Express Session Configuration
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'pnn_tech_secret_key_2026',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Set to true if running with HTTPS
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+}));
+
+// Expose currentUser to all views/templates
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session ? req.session.user : null;
+  next();
+});
+
 // Serve static assets from public directory and project root
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
+
+// ==========================================================================
+// Authentication & User Account Management Routes
+// ==========================================================================
+app.use('/', authRoutes);
+app.use('/', userManagementRoutes);
 
 // ==========================================================================
 // Student CRUD Routes (Migrated from resources/ PHP)
@@ -229,7 +256,8 @@ app.use((req, res) => {
       <p style="font-size: 1.2rem; color: #64748b;">The requested page could not be found.</p>
       <div style="margin-top: 1.5rem;">
         <a href="/" class="btn-primary" style="margin-right: 0.5rem; text-decoration: none;">Go to Storefront</a>
-        <a href="/students" class="btn-secondary" style="text-decoration: none; border: 1px solid #cbd5e1; color: #334155;">Student Records CRUD</a>
+        <a href="/users" class="btn-primary" style="margin-right: 0.5rem; background: #0070f3; text-decoration: none;">User Management</a>
+        <a href="/students" class="btn-secondary" style="text-decoration: none; border: 1px solid #cbd5e1; color: #334155;">Student CRUD</a>
       </div>
     </body>
     </html>
@@ -249,10 +277,12 @@ async function startServer() {
 
   app.listen(PORT, () => {
     console.log(`\n======================================================`);
-    console.log(`  🚀 PNN TECH & STUDENT CRUD - Node.js Express Server`);
+    console.log(`  🚀 PNN TECH & USER MANAGEMENT - Node.js Server`);
     console.log(`  🌐 Website URL:     http://localhost:${PORT}`);
+    console.log(`  👥 Users System:    http://localhost:${PORT}/users`);
+    console.log(`  🔑 Sign In Portal:  http://localhost:${PORT}/login`);
     console.log(`  🎓 Student CRUD:    http://localhost:${PORT}/students`);
-    console.log(`  ⚡ Student REST:    http://localhost:${PORT}/api/students`);
+    console.log(`  ⚡ Users REST:      http://localhost:${PORT}/api/users`);
     console.log(`  🛒 Products API:    http://localhost:${PORT}/api/products`);
     console.log(`======================================================\n`);
   });

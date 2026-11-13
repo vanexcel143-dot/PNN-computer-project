@@ -6,6 +6,7 @@
 const mysql = require('mysql2/promise');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const { runMigration } = require('../migrations/migrate_user_system');
 
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
@@ -68,6 +69,9 @@ async function initializeDatabase() {
       `);
       console.log('✅ Initial student records seeded into pnn_project_db.');
     }
+
+    // 4. Initialize User System, User Types, & Default Superadmin
+    await runMigration();
 
     isDbInitialized = true;
     console.log(`✅ MySQL connected & verified: ${dbConfig.database}`);
